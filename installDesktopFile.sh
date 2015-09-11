@@ -28,5 +28,6 @@ done
 #echo ${orderedDirectoryFiles[@]}
 #echo ${directoryFiles[@]}
 
-xdg-desktop-menu install --novendor --noupdate "${orderedDirectoryFiles[@]}" "$absoluteDesktopFile"
+xdg-desktop-menu install --novendor "${orderedDirectoryFiles[@]}" "$absoluteDesktopFile"
 xdg-desktop-menu forceupdate
+

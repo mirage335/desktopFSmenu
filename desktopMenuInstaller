@@ -5,4 +5,4 @@
 export PATH="$PATH:$(getScriptAbsoluteFolder)"
 
 find . -name '*.desktop' -exec installDesktopFile.sh {} \;
-
+kbuildsycoca4 -noincremental #Rebuild dolphin filemanager view of associations.
