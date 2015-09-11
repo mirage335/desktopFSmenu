@@ -1,6 +1,29 @@
 #!/bin/bash
 
-sed -i 's/\(^GenericName.*\=\).*$/\1/g' "$1"
+. ubiquitous_bash.sh
 
-sed -i 's/\(^Name.*\=\).*$/\1/g' "$1"
+tempFile="/tmp/$(getUUID)"
+
+#http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+filename="${1##*/}"
+name="${filename%.*}"
+
+#sed -i 's/\(^GenericName.*\=\).*$/\1/g' "$1"
+
+#sed -i 's/\(^Name.*\=\).*$/\1/g' "$1"
+
+#sed -i '/^\(Name|Exec|Terminal|Type|Icon|Categories|MimeType|StartupNotify\)/!d' "$1"
+
+echo '[Desktop Entry]' > "$tempFile"
+echo "Name=$name" >> "$tempFile"
+echo "GenericName=$name" >> "$tempFile"
+grep 'Exec' "$1" | head -n1 >> "$tempFile"
+grep 'Terminal' "$1" | head -n1 >> "$tempFile"
+grep 'Type' "$1" | head -n1 >> "$tempFile"
+grep 'Icon' "$1" | head -n1 >> "$tempFile"
+grep 'Categories' "$1" | head -n1 >> "$tempFile"
+grep 'MimeType' "$1" | head -n1 >> "$tempFile"
+grep 'StartupNotify' "$1" | head -n1 >> "$tempFile"
+
+mv "$tempFile" "$1"
 
