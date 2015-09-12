@@ -17,7 +17,7 @@ mv /usr/local/share/applications/* /usr/local/share/applications.bak/
 
 mkdir -p /etc/xdg
 mkdir -p /etc/xdg.bak
-mv /etc/xdg/* /etc/xdg.bak/
+#mv /etc/xdg/* /etc/xdg.bak/
 
 
 
