@@ -17,13 +17,20 @@ name="${filename%.*}"
 echo '[Desktop Entry]' > "$tempFile"
 echo "Name=$name" >> "$tempFile"
 echo "GenericName=$name" >> "$tempFile"
-grep 'Exec' "$1" | head -n1 >> "$tempFile"
-grep 'Terminal' "$1" | head -n1 >> "$tempFile"
-grep 'Type' "$1" | head -n1 >> "$tempFile"
-grep 'Icon' "$1" | head -n1 >> "$tempFile"
-grep 'Categories' "$1" | head -n1 >> "$tempFile"
-grep 'MimeType' "$1" | head -n1 >> "$tempFile"
-grep 'StartupNotify' "$1" | head -n1 >> "$tempFile"
+grep '^Exec' "$1" | head -n1 >> "$tempFile"
+grep '^Terminal' "$1" | head -n1 >> "$tempFile"
+grep '^Type' "$1" | head -n1 >> "$tempFile"
+grep '^Icon' "$1" | head -n1 >> "$tempFile"
+grep '^Categories' "$1" | head -n1 >> "$tempFile"
+grep '^MimeType' "$1" | head -n1 >> "$tempFile"
+grep '^StartupNotify' "$1" | head -n1 >> "$tempFile"
 
 mv "$tempFile" "$1"
+
+if ! grep '^Type' "$1" >> /dev/null && echo "$1" | grep '\.desktop$' >> /dev/null
+then
+	echo 'Type=Application' >> "$1"
+fi
+
+
 

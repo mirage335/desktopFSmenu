@@ -6,16 +6,18 @@
 #chmod 755 /etc/xdg
 
 mkdir -p /usr/share/applications
-mv /usr/share/applications.bak/* /usr/share/applications/
 mkdir -p /usr/share/applications.bak
+mv /usr/share/applications.bak/* /usr/share/applications/
+
 
 mkdir -p /usr/local/share/applications
-mv /usr/local/share/applications.bak/* /usr/local/share/applications/
 mkdir -p /usr/local/share/applications.bak
+mv /usr/local/share/applications.bak/* /usr/local/share/applications/
+
 
 mkdir -p /etc/xdg
-mv /etc/xdg.bak/* /etc/xdg
 mkdir -p /etc/xdg.bak
+mv /etc/xdg.bak/* /etc/xdg
 
 
 
