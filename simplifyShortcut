@@ -21,7 +21,6 @@ grep '^Exec' "$1" | head -n1 >> "$tempFile"
 grep '^Terminal' "$1" | head -n1 >> "$tempFile"
 grep '^Type' "$1" | head -n1 >> "$tempFile"
 grep '^Icon' "$1" | head -n1 >> "$tempFile"
-grep '^Categories' "$1" | head -n1 >> "$tempFile"
 grep '^MimeType' "$1" | head -n1 >> "$tempFile"
 grep '^StartupNotify' "$1" | head -n1 >> "$tempFile"
 

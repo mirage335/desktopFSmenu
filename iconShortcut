@@ -1,0 +1,27 @@
+#!/bin/bash
+
+. ubiquitous_bash.sh
+
+tempFile="/tmp/$(getUUID)"
+
+name=$(grep '^Exec' "$1" | head -n1 | cut -f2 -d\= | cut -f1 -d\  )
+
+echo '[Desktop Entry]' > "$tempFile"
+echo "Name=$name" >> "$tempFile"
+echo "GenericName=$name" >> "$tempFile"
+grep '^Exec' "$1" | head -n1 >> "$tempFile"
+grep '^Terminal' "$1" | head -n1 >> "$tempFile"
+grep '^Type' "$1" | head -n1 >> "$tempFile"
+grep '^Icon' "$1" | head -n1 >> "$tempFile"
+
+rm "$1"
+
+mv "$tempFile" "$name".desktop
+
+if ! grep '^Type' "$name".desktop >> /dev/null >> /dev/null
+then
+	echo 'Type=Application' >> "$name".desktop
+fi
+
+
+
