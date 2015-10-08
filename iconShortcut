@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Variation on simplifyShortcut, used to produce shortcuts which can be put in a hidden place, for the sole purpose of supplying the KDE task manager with icon information.
+
 . ubiquitous_bash.sh
 
 tempFile="/tmp/$(getUUID)"
